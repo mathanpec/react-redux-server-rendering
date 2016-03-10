@@ -1,0 +1,15 @@
+.navbar{
+  padding: 10px 5px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-width: 0px 0px 1px 0px;
+}
+.nav-link{
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+.content{
+  padding: 15px;
+  background-color:
+}
