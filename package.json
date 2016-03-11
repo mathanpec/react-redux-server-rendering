@@ -18,7 +18,9 @@
     "redux",
     "webpack",
     "starter kit",
-    "react redux started kit"
+    "react redux starter kit",
+    "react setup",
+    "redux setup"
   ],
   "author": "Mathan Appadurai",
   "license": "ISC",
