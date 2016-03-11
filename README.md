@@ -1,1 +1,1 @@
-# react-redux-server-rendering
+# react-redux-starter-kit
