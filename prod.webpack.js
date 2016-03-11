@@ -7,7 +7,7 @@ var config = {
   context: path.resolve(__dirname, 'app'),
   entry: {
     app: './index.js',
-    vendor: ['react', 'react-dom', 'redux', 'react-redux', 'react-router', 'redux-thunk']
+    vendor: ['react', 'react-dom', 'redux', 'react-redux', 'react-router', 'redux-thunk', 'isomorhic-fetch']
   },
   output: {
     path: BUILD_PATH,
@@ -47,7 +47,9 @@ var config = {
     alias: {
       components: path.resolve(__dirname, 'app', 'components'),
       containers: path.resolve(__dirname, 'app', 'containers'),
-      reducers: path.resolve(__dirname, 'app', 'reducers')
+      reducers: path.resolve(__dirname, 'app', 'reducers'),
+      actions: path.resolve(__dirname, 'app', 'actions'),
+      api: path.resolve(__dirname, 'app', 'api')
     }
   }
 };

@@ -40,7 +40,9 @@ var config = {
     alias: {
       components: path.resolve(__dirname, 'app', 'components'),
       containers: path.resolve(__dirname, 'app', 'containers'),
-      reducers: path.resolve(__dirname, 'app', 'reducers')
+      reducers: path.resolve(__dirname, 'app', 'reducers'),
+      actions: path.resolve(__dirname, 'app', 'actions'),
+      api: path.resolve(__dirname, 'app', 'api')
     }
   }
 };
