@@ -43,6 +43,6 @@ Follow these steps,
 * Add your route in route.js (Check react-router documentation to see how to map a route and component)
 * Add your reducer in reducers folder and handle your actions in it.
 * Then add that reducer into `combineReducer` of store.js
-* Connect your component mapped in route to redux store using `connect` from react-redux (Check react redux documentation)
+* Connect your component mapped in route to redux store using `connect` from react-redux (Check react-redux documentation)
 
 Have fun!!!
