@@ -25,10 +25,10 @@ Basic knowledge on
 Just clone the repo and install the necessary node modules:
 
 ```shell
-$ git clone https://github.com/davezuko/react-redux-starter-kit.git
+$ git clone https://github.com/mathanpec/react-redux-starter-kit.git
 $ cd react-redux-starter-kit
-$ npm install                   # Install Node modules listed in ./package.json (may take a while the first time)
-$ npm start                     # Compile and launch
+$ npm install                   
+$ npm start                     # Starts in dev mode (With hot reloading)
 ```
 ## Usage
 
