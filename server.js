@@ -1,38 +1,31 @@
 'use strict';
+import express from 'express';
+import compression from 'compression';
+import path from 'path';
+import webpackDevServer from './webpackDevServer';
 
-let express = require('express');
-let compression = require('compression');
-let path = require('path');
-let webpack = require('webpack');
-let webpackDevMiddleware = require('webpack-dev-middleware');
-let webpackHotMiddleware = require('webpack-hot-middleware');
-let httpProxy = require('http-proxy');
-let webpackconfig = require('./dev.webpack');
+import React from 'react';
+import { RoutingContext, match, createMemoryHistory } from 'react-router';
+import createLocation from 'history/lib/createLocation';
+import createRoutes from './app/routes';
+import store from './app/store';
 
 const app = express();
 
 const publicPath = path.resolve(__dirname, 'public');
 const env = process.env.NODE_ENV;
 const isDevelopment = env !== 'production';
-const proxy = httpProxy.createProxyServer({target: 'http://localhost:3000' + webpackconfig.output.publicPath});
+if (isDevelopment) {
+  webpackDevServer.createDevServer(app);
+}
 
 app.use(compression());
 app.use(express.static(publicPath));
-if (isDevelopment) {
-  let compiler = webpack(webpackconfig);
-  app.use(webpackDevMiddleware(compiler, {
-    publicPath: webpackconfig.output.publicPath
-  }));
-  app.use(webpackHotMiddleware(compiler));
-}
 
 app.use('*', function (req, res) {
-  if (isDevelopment) {
-    req.url = '';
-    proxy.web(req, res);
-  } else {
-    res.sendFile(path.join(__dirname, 'public/build/index.html'));
-  }
+  let history = createMemoryHistory();
+  let routes = createRoutes(history);
+  let location = createLocation(req.url);
 });
 
 let server = app.listen(3000, () => {

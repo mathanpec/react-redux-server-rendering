@@ -12,14 +12,14 @@ var config = {
   output: {
     path: BUILD_PATH,
     filename: 'bundle.js',
-    publicPath: '/holycow/'
+    publicPath: '/'
   },
   module: {
     loaders: [
       {
         test: /\.js$/,
         loader: 'babel',
-        exclude: '/node_modules/'
+        exclude: /node_modules/
       },
       {
         test: /\.s?css$/,

@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import {BrowserHistory} from 'react-router';
 import store from './store';
-import routes from './routes';
+import createRoutes from './routes';
 
 class App extends Component {
   render () {
     return (
       <Provider store={store}>
-        {routes}
+        {createRoutes(BrowserHistory)}
       </Provider>
     );
   }
