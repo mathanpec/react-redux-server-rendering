@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "test",
-    "start": "NODE_ENV=dev babel-node server.js",
+    "start": "nodemon server.js",
+    "compile-server": "webpack --watch --config server.webpack.js",
     "prod-build": "webpack -p --config prod.webpack.js",
     "prod-run": "NODE_ENV=production node server.js"
   },
