@@ -8,7 +8,7 @@ import createRoutes from './routes';
 let state;
 
 if (window.__REDUX_STATE__) {
-  state = JSON.parse(window.__REDUX_STATE__);
+  state = window.__REDUX_STATE__;
 }
 
 const store = configureStore(state);

@@ -16,7 +16,7 @@ class Index extends React.Component {
             })
           }
           <script dangerouslySetInnerHTML={{__html: `
-            window.__REDUX_STATE__ = '${this.props.state}'
+            window.__REDUX_STATE__ = ${this.props.state}
           `}} />
         </head>
         <body>
