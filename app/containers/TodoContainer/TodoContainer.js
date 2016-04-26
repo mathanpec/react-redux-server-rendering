@@ -4,7 +4,9 @@ import {fetchTodoAction} from 'actions/actionCreators';
 
 class TodoContainer extends Component {
   componentDidMount () {
-    this.props.getTodoItems();
+    if (this.props.todo.fetch_state !== 'SUCCESS') {
+      this.props.getTodoItems();
+    }
   }
 
   getLoadingStatus () {

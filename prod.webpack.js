@@ -1,13 +1,13 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var AssetsPlugin = require('assets-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
 var BUILD_PATH = path.resolve(__dirname, 'public', 'build');
 var config = {
-  devtool: 'source-map',
   context: path.resolve(__dirname, 'app'),
   entry: {
     app: './index.js',
-    vendor: ['react', 'react-dom', 'redux', 'react-redux', 'react-router', 'redux-thunk', 'isomorhic-fetch']
+    vendor: ['react', 'react-dom', 'redux', 'react-redux', 'react-router', 'redux-thunk']
   },
   output: {
     path: BUILD_PATH,
@@ -23,15 +23,12 @@ var config = {
       },
       {
         test: /\.s?css$/,
-        loader: 'style-loader!css-loader?modules&localIdentName=[hash:base64:5]'
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&localIdentName=[local]---[hash:base64:5]')
       }
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'index.tpl.html'),
-      filename: 'index.html'
-    }),
+    new ExtractTextPlugin('[name]-[chunkhash].css'),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false,
@@ -40,8 +37,9 @@ var config = {
     }),
     new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })
+      'process.env.NODE_ENV': '"production"'
+    }),
+    new AssetsPlugin()
   ],
   resolve: {
     alias: {

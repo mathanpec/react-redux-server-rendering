@@ -1,14 +1,30 @@
 var webpack = require('webpack');
 var path = require('path');
-var BUILD_PATH = path.resolve(__dirname, 'server');
+var fs = require('fs');
+var BUILD_PATH = path.resolve(__dirname);
+
+var nodeModules = {};
+var nodeDirectories = fs.readdirSync('node_modules');
+nodeDirectories.filter(function (modName) {
+  return ['.bin'].indexOf(modName) === -1;
+})
+.forEach(function (mod) {
+  nodeModules[mod] = 'commonjs ' + mod;
+});
+
+var mode = process.env.NODE_ENV;
 var config = {
   entry: [
     './server.js'
   ],
   target: 'node',
+  node: {
+    __dirname: true
+  },
+  externals: nodeModules,
   output: {
     path: BUILD_PATH,
-    filename: 'index.js'
+    filename: 'server-bundle.js'
   },
   module: {
     loaders: [
@@ -23,13 +39,15 @@ var config = {
       },
       {
         test: /\.s?css$/,
-        loader: 'isomorphic-style-loader!css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]'
+        loader: 'isomorphic-style-loader!css-loader?modules&localIdentName=[local]' + (mode === 'production' ? '---[hash:base64:5]' : '')
       }
-    ],
-    noParse: [/webpackDevServer/]
+    ]
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin()
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(mode)
+    })
   ],
   resolve: {
     alias: {

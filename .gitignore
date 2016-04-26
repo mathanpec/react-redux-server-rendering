@@ -1,2 +1,4 @@
 node_modules
 public
+server-bundle.js
+webpack-assets.json

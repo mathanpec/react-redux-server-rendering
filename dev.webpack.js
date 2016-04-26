@@ -1,6 +1,6 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var BUILD_PATH = path.resolve(__dirname, 'public', 'build');
 var config = {
   devtool: 'source-map',
@@ -23,18 +23,15 @@ var config = {
       },
       {
         test: /\.s?css$/,
-        loader: 'style-loader!css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]'
+        loader: ExtractTextPlugin.extract('isomorphic-style-loader', 'css-loader?modules&localIdentName=[local]')
       }
     ]
   },
   plugins: [
+    new ExtractTextPlugin('bundle.css'),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'index.tpl.html'),
-      filename: 'index.html'
-    })
+    new webpack.NoErrorsPlugin()
   ],
   resolve: {
     alias: {
