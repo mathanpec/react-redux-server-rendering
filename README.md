@@ -1,4 +1,4 @@
-# react-redux-starter-kit
+# react-redux-server-rendering
 
 Sample code setup for isomorphic rendering with React + Redux + React-router + express. This setup includes everything you need for both development and production deployment.
 
