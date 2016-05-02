@@ -5,7 +5,7 @@ Sample code setup for isomorphic rendering with React + Redux + React-router + e
 * Webpack setup for dev environment with hot reloading
 * Webpack setup for prod environment with minification and cache busting
 * Server side rendering
-* Server bunlding excluding node modules (Bundling server.js also since server rendering imports components written in )
+* Server bunlding excluding node modules (Bundling server.js also, since server rendering imports components written in es6 so babel compilation is requierd for server also)
 * React router setup
 * Redux setup
 * Connecting components and redux store
