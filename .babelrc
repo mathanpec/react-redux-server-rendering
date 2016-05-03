@@ -1,11 +1,3 @@
 {
-  "presets": ["es2015", "react"],
-  "env": {
-      "plugins": [
-        [ "babel-plugin-module-alias", [
-          { "src": "./app/reducers", "expose": "reducers" }
-          ]
-        ]
-      ]
-  }
+  "presets": ["es2015", "react"]
 }
