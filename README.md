@@ -1,6 +1,6 @@
 # react-redux-server-rendering
 
-Sample code setup for isomorphic rendering with React + Redux + React-router + express. This setup includes everything you need for both development and production deployment.
+Sample code setup for server side rendering with React + Redux + React-router + express. This setup includes everything you need for both development and production deployment.
 
 * Webpack setup for dev environment with hot reloading
 * Webpack setup for prod environment with minification and cache busting
