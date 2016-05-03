@@ -30,8 +30,8 @@ Above step will install all the necessary modules mentioned in `package.json`. U
 
 ## For running in Production mode
 
-* First do `npm run prod-server` to build server bundle.
-* Next is to execute `npm run prod-build` which will build the client side assets.
+* First to execute `npm run prod-build` which will build the client side assets.
+* Next is to do `npm run prod-server` to build server bundle.
 * Now you have all the code ready to run in production mode. Now you can move the app to the server with NodeJS environment 
 * Then finally doing `npm run prod-run` will kick start your app in production mode.
 
