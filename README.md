@@ -25,8 +25,8 @@ Above step will install all the necessary modules mentioned in `package.json`. U
 
 ## For DEV environment
 
-* Execute `npm run dev-server` to build server bundle which will actually create `server-bundle.js` and this creates new bundle on every change to server code.
-* Then do `npm run dev-start` in another terminal window to start the server using the created bundle. If you want restart the server on every new bundle creation, you can use `nodemon server-bundle.js` to start the server.
+* Execute `npm run dev-server` to build server bundle which will actually create `server-bundle.js` and this command watch for the changes in server code creates new bundle on every change.
+* Then do `npm run dev-start` in another terminal window to start the server using the created bundle. If you want to restart the server everytime `server-bundle.js` changes, you can use `nodemon server-bundle.js` to auto restart the server.
 
 ## For running in Production mode
 
