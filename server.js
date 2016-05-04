@@ -3,7 +3,6 @@ import express from 'express';
 import compression from 'compression';
 import path from 'path';
 import webpackDevServer from './webpackDevServer';
-import assets from './webpack-assets.json';
 
 import React from 'react';
 import ReactDOM from 'react-dom/server';
@@ -25,6 +24,7 @@ if (isDevelopment) {
   scriptFiles = ['/bundle.js'];
   styleFiles = ['/bundle.css'];
 } else {
+  let assets = require('./webpack-assets.json');
   scriptFiles = [assets.vendor.js, assets.app.js];
   styleFiles = [assets.app.css];
 }

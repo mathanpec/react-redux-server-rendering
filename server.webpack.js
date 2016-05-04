@@ -3,16 +3,20 @@ var path = require('path');
 var fs = require('fs');
 var BUILD_PATH = path.resolve(__dirname);
 
-var nodeModules = {};
+var modules = {};
+var mode = process.env.NODE_ENV;
 var nodeDirectories = fs.readdirSync('node_modules');
 nodeDirectories.filter(function (modName) {
   return ['.bin'].indexOf(modName) === -1;
 })
 .forEach(function (mod) {
-  nodeModules[mod] = 'commonjs ' + mod;
+  modules[mod] = 'commonjs ' + mod;
 });
 
-var mode = process.env.NODE_ENV;
+if(mode !== 'production'){
+  modules['./webpack-assets.json'] = 'commonjs ./webpack-assets.json'; // Need only in prod mode.
+}
+
 var config = {
   entry: [
     './server.js'
@@ -21,7 +25,7 @@ var config = {
   node: {
     __dirname: true
   },
-  externals: nodeModules,
+  externals: modules,
   output: {
     path: BUILD_PATH,
     filename: 'server-bundle.js'
